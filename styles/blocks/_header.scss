@@ -5,6 +5,10 @@
     padding-block: rem(20);
     text-align: center;
     border-bottom: var(--border);
+
+    @include mobile {
+      padding-block: rem(14);
+    }
   }
   &__body {
     padding-block: rem(24);
@@ -22,6 +26,24 @@
     @include mobile-above {
       display: contents;
     }
+
+    @include mobile {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      row-gap: 3rem;
+      padding: 1rem;
+      background-color: var(--color-dark-10);
+      transition-duration: var(--transition-duration);
+
+      &:not(is.active) {
+        @include hide;
+
+        translate: 100%;
+      }
+    }
   }
 
   &__menu {
@@ -29,11 +51,24 @@
       display: flex;
       align-items: center;
       column-gap: rem(16);
+
+      @include laptop {
+        column-gap: 16px;
+      }
+
+      @include mobile {
+        flex-direction: column;
+        row-gap: 1rem;
+      }
     }
     &-link {
       padding: rem(14) rem(24);
-
       color: var(--color-gray-50);
+
+      @include laptop {
+        padding: rem(10) rem(18);
+      }
+
       &.is-active {
         color: var(--color-light);
         font-weight: 500;
