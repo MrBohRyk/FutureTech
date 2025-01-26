@@ -29,7 +29,16 @@ body,
   Прибираємо зовнішні вертикальні відступи потрібним тегам,
   у яких є атрибут class
  */
-:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
   margin-block: 0;
 }
 
@@ -146,7 +155,8 @@ label {
   (за винятком тих, у яких вже вказано
   атрибут fill зі значенням 'none' або починається з 'url')
  */
-:where([fill]:not([fill="none"], [fill^="url"])) {
+:where([fill]:not([fill=none],
+[fill^=url])) {
   fill: currentColor;
 }
 
@@ -155,7 +165,8 @@ label {
   (за винятком тих, у яких вже вказано
   атрибут stroke зі значенням 'none')
  */
-:where([stroke]:not([stroke="none"], [stroke^="url"])) {
+:where([stroke]:not([stroke=none],
+[stroke^=url])) {
   stroke: currentColor;
 }
 
@@ -522,6 +533,11 @@ button[aria-label]::before {
   padding-block: 1.5rem;
   background-color: var(--color-dark-10);
 }
+@media (width <= 47.99875rem) {
+  .header__body {
+    padding-block: 1.25rem;
+  }
+}
 .header__body-inner {
   display: flex;
   justify-content: space-between;
@@ -545,10 +561,15 @@ button[aria-label]::before {
     background-color: var(--color-dark-10);
     transition-duration: var(--transition-duration);
   }
-  .header__overlay:not(is.active) {
+  .header__overlay:not(.is-active) {
     opacity: 0;
     visibility: hidden;
     translate: 100%;
+  }
+}
+@media (width <= 47.99875rem) {
+  .header__menu {
+    overflow-y: auto;
   }
 }
 .header__menu-list {
@@ -576,14 +597,20 @@ button[aria-label]::before {
     padding: 0.625rem 1.125rem;
   }
 }
-.header__menu-link,
-.is-active {
+.header__menu-link.is-active {
   color: var(--color-light);
   font-weight: 500;
   background-color: var(--color-dark);
   border: var(--border);
   border-radius: 0.625rem;
   pointer-events: none;
+}
+@media (width <= 47.99875rem) {
+  .header__contact-us-link {
+    width: 100%;
+    max-width: 18.75rem;
+    align-self: center;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
