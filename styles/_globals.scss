@@ -12,7 +12,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-family-base);
-  letter-spacing: 0.03em;
+  letter-spacing: -0.03em;
   color: var(--color-gray-50);
   background-color: var(--color-dark);
 }
@@ -22,24 +22,32 @@ main {
 }
 
 h1,
-.h1 h2,
-.h2 h3,
-.h3 h4,
-.h4 h5,
-.h5 h6,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
 .h6 {
   color: var(--color-light);
-  font-weight: 500;
 }
 
 h1,
-.h1 h2,
-.h2 h3,
+.h1,
+h2,
+.h2,
+h3,
 .h3 {
   font-family: var(--font-family-accent);
+  font-weight: 500;
 }
 h5,
-.h5 h6,
+.h5,
+h6,
 .h6 {
   font-weight: 600;
 }
@@ -71,6 +79,7 @@ h6,
 }
 a,
 button,
+label,
 input,
 textarea,
 select,
