@@ -1,0 +1,16 @@
+@use "../helpers/" as *;
+
+.bordered-grid {
+  --columns: 1;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns)) 1fr;
+
+  &--2-cols {
+    --columns: 2;
+  }
+
+  &--3-cols {
+    --columns: 3;
+  }
+}
