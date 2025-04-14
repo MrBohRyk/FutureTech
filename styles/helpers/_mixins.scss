@@ -70,10 +70,12 @@
   position: relative;
 
   &::before {
-    @include abs-x;
-
     content: "";
+    position: absolute;
+    left: $left;
+    right: $right;
     #{$property}: 0;
+    translate: $translate;
     width: 110vw;
     height: rem(1);
     background-color: var(--color-dark-15);
