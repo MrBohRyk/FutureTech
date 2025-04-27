@@ -1239,6 +1239,12 @@ button[aria-label]::before {
   display: grid;
   row-gap: clamp(0.375rem, 0.173553719rem + 0.826446281vw, 1rem);
 }
+.card__preview-info:has(.card__rating-view) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1rem;
+}
 .card__body {
   padding-right: 0;
 }
@@ -1271,6 +1277,19 @@ button[aria-label]::before {
 @media (width > 47.99875rem) {
   .card__grid--2-cols-alt {
     grid-template-columns: auto 1fr;
+  }
+}
+.card__grid--3-cols {
+  gap: clamp(1.25rem, 0.645661157rem + 2.479338843vw, 3.125rem) 1.25rem;
+}
+@media (width <= 90.06125rem) {
+  .card__grid--3-cols {
+    column-gap: 1rem;
+  }
+}
+@media (width > 47.99875rem) {
+  .card__grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 .card__cell {
@@ -1577,6 +1596,7 @@ button[aria-label]::before {
 .bordered-grid--3-cols {
   --columns: 3;
   --itemPaddingX: 3.125rem;
+  column-gap: calc(var(--itemPaddingX) * 2);
 }
 @media (width <= 90.06125rem) {
   .bordered-grid--3-cols {
@@ -1585,18 +1605,22 @@ button[aria-label]::before {
 }
 @media (width > 63.99875rem) {
   .bordered-grid--3-cols .bordered-grid__item {
+    position: relative;
     /**
     елементи першої і другої колонки
     */
     /*
     Елементи в 2-ї колонки*/
-    /*
-    елементи в 2-ї і 3її колонки
-    */
   }
-  .bordered-grid--3-cols .bordered-grid__item:nth-child(3n-2), .bordered-grid--3-cols .bordered-grid__item:nth-child(3n-1) {
-    padding-right: var(--itemPaddingX);
-    border-right: var(--border);
+  .bordered-grid--3-cols .bordered-grid__item:nth-child(3n-2)::after, .bordered-grid--3-cols .bordered-grid__item:nth-child(3n-1)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: calc(100% + var(--itemPaddingX));
+    width: 0.0625rem;
+    height: 100%;
+    background-color: var(--color-dark-15);
   }
   .bordered-grid--3-cols .bordered-grid__item:nth-child(3n-1) {
     position: relative;
@@ -1611,9 +1635,6 @@ button[aria-label]::before {
     width: 110vw;
     height: 0.0625rem;
     background-color: var(--color-dark-15);
-  }
-  .bordered-grid--3-cols .bordered-grid__item:nth-child(3n-1), .bordered-grid--3-cols .bordered-grid__item:nth-child(3n) {
-    padding-left: var(--itemPaddingX);
   }
 }
 @media (width <= 63.99875rem) {
@@ -2030,8 +2051,11 @@ button[aria-label]::before {
 }
 
 .video-card {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   row-gap: 1.875rem;
+  height: 100%;
 }
 @media (width <= 90.06125rem) {
   .video-card {
@@ -2041,6 +2065,10 @@ button[aria-label]::before {
 .video-card__body {
   display: grid;
   row-gap: clamp(0.25rem, 0.1291322314rem + 0.4958677686vw, 0.625rem);
+  flex-grow: 1;
+}
+.video-card__player {
+  width: 100%;
 }
 
 .table-of-contents {
